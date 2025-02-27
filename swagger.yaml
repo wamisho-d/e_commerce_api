@@ -1,0 +1,379 @@
+swagger: '2.0'
+info:
+  version: "1.0.0"
+  title: "Advanced E-commerce API"
+  description: "API documentation for Advanced E-commerce platform."
+host: "localhost:5000"
+basePath: "/api"
+schemes:
+  - "http"
+paths:
+  /customers/:
+    post:
+      summary: "Create Customer"
+      description: "Create a new customer."
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Customer details"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              name:
+                type: "string"
+              email:
+                type: "string"
+              phone:
+                type: "string"
+      responses:
+        201:
+          description: "Customer created successfully"
+  /customers/{id}:
+    get:
+      summary: "Read Customer"
+      description: "Retrieve customer details by ID."
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "Customer ID"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "Customer details"
+    put:
+      summary: "Update Customer"
+      description: "Update customer details."
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "Customer ID"
+          required: true
+          type: "integer"
+        - in: "body"
+          name: "body"
+          description: "Customer details"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              name:
+                type: "string"
+              email:
+                type: "string"
+              phone:
+                type: "string"
+      responses:
+        200:
+          description: "Customer updated successfully"
+    delete:
+      summary: "Delete Customer"
+      description: "Delete a customer by ID."
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "Customer ID"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "Customer deleted successfully"
+  /customers/accounts:
+    post:
+      summary: "Create Customer Account"
+      description: "Create a new customer account."
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Customer account details"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              username:
+                type: "string"
+              password:
+                type: "string"
+              customer_id:
+                type: "integer"
+      responses:
+        201:
+          description: "Customer account created successfully"
+  /customers/accounts/{id}:
+    get:
+      summary: "Read Customer Account"
+      description: "Retrieve customer account details by ID."
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "Customer Account ID"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "Customer account details"
+    put:
+      summary: "Update Customer Account"
+      description: "Update customer account details."
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "Customer Account ID"
+          required: true
+          type: "integer"
+        - in: "body"
+          name: "body"
+          description: "Customer account details"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              username:
+                type: "string"
+              password:
+                type: "string"
+      responses:
+        200:
+          description: "Customer account updated successfully"
+    delete:
+      summary: "Delete Customer Account"
+      description: "Delete a customer account by ID."
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "Customer Account ID"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "Customer account deleted successfully"
+  /products/:
+    post:
+      summary: "Create Product"
+      description: "Create a new product."
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Product details"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              name:
+                type: "string"
+              price:
+                type: "number"
+                format: "float"
+              description:
+                type: "string"
+      responses:
+        201:
+          description: "Product created successfully"
+    get:
+      summary: "List Products"
+      description: "Retrieve a list of all products."
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "List of products"
+  /products/{id}:
+    get:
+      summary: "Read Product"
+      description: "Retrieve product details by ID."
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "Product ID"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "Product details"
+    put:
+      summary: "Update Product"
+      description: "Update product details."
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "Product ID"
+          required: true
+          type: "integer"
+        - in: "body"
+          name: "body"
+          description: "Product details"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              name:
+                type: "string"
+              price:
+                type: "number"
+                format: "float"
+              description:
+                type: "string"
+      responses:
+        200:
+          description: "Product updated successfully"
+    delete:
+      summary: "Delete Product"
+      description: "Delete a product by ID."
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "Product ID"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "Product deleted successfully"
+  /orders/:
+    post:
+      summary: "Place Order"
+      description: "Create a new order."
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Order details"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              customer_id:
+                type: "integer"
+              products:
+                type: "array"
+                items:
+                  type: "object"
+                  properties:
+                    product_id:
+                      type: "integer"
+                    quantity:
+                      type: "integer"
+      responses:
+        201:
+          description: "Order placed successfully"
+  /orders/{id}:
+    get:
+      summary: "Retrieve Order"
+      description: "Retrieve order details by ID."
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "Order ID"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "Order details"
+definitions:
+  Customer:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      email:
+        type: "string"
+      phone:
+        type: "string"
+  CustomerAccount:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      username:
+        type: "string"
+      password:
+        type: "string"
+      customer_id:
+        type: "integer"
+  Product:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      price:
+        type: "number"
+        format: "float"
+      description:
+        type: "string"
+  Order:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      order_date:
+        type: "string"
+        format: "date-time"
+      customer_id:
+        type: "integer"
+      products:
+        type: "array"
+        items:
+          $ref: "#/definitions/OrderProduct"
+  OrderProduct:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      order_id:
+        type: "integer"
+      product_id:
+        type: "integer"
+      quantity:
+        type: "integer"
+securityDefinitions:
+  JWT:
+    type: "apiKey"
+    name: "Authorization"
+    in: "header"
+security:
+  - JWT: []
